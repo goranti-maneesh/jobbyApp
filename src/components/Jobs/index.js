@@ -202,6 +202,7 @@ class Jobs extends Component {
   noJobsView = () => (
     <div className="no-jobs-container">
       <img
+        alt="no jobs"
         className="no-jobs"
         src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
       />
@@ -228,7 +229,7 @@ class Jobs extends Component {
   }
 
   renderJobs = () => {
-    const {jobsapiStatus, jobsList} = this.state
+    const {jobsapiStatus} = this.state
     switch (jobsapiStatus) {
       case apiConstans.inProgress:
         return this.renderLoadingView()

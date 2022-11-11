@@ -1,11 +1,11 @@
-.each-job-card {
-  width: 650px;
+.similar-job-card {
+  width: 300px;
   min-height: 350px;
   background-color: #2c364c;
   list-style-type: none;
   margin-right: 35px;
   margin-bottom: 25px;
-  margin-left: 0;
+
   border-radius: 10px;
   display: flex;
   flex-direction: column;
