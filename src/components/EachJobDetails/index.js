@@ -1,5 +1,6 @@
 import {AiFillStar} from 'react-icons/ai'
 import {IoLocationSharp, IoBagRemoveSharp} from 'react-icons/io5'
+import {BiLinkExternal} from 'react-icons/bi'
 
 import Skills from '../Skills'
 import SimilarJobs from '../SimilarJobs'
@@ -25,7 +26,11 @@ const EachJobDetails = props => {
     <div>
       <li className="each-job-details-card">
         <div className="logo-container">
-          <img alt={title} className="company-logo" src={companyLogoUrl} />
+          <img
+            alt="job details company logo"
+            className="company-logo"
+            src={companyLogoUrl}
+          />
           <div>
             <h1 className="title-heading">{title}</h1>
             <div className="star-container">
@@ -60,7 +65,7 @@ const EachJobDetails = props => {
             href={companyWebsiteUrl}
           >
             <p className="visit-icon">Visit </p>
-            <IoLocationSharp className="visiting-icon" />
+            <BiLinkExternal className="visiting-icon" />
           </a>
         </div>
         <p className="discription-paragraph">{jobDescription}</p>
@@ -73,7 +78,7 @@ const EachJobDetails = props => {
         <h1 className="discription">Life at Company </h1>
         <div className="life-at-container">
           <p className="para">{lifeAtCompany.description}</p>
-          <img alt={location} src={lifeAtCompany.image_url} />
+          <img alt="life at company" src={lifeAtCompany.image_url} />
         </div>
       </li>
       <h1 className="similar-descr">Similar Jobs </h1>

@@ -45,6 +45,8 @@
   border: none;
   border-radius: 5px;
   font-weight: 500;
+  cursor: pointer;
+  outline: none;
 }
 .error-msg {
   color: #ff0b37;

@@ -10,32 +10,31 @@ const Header = props => {
     history.replace('/login')
   }
 
-  const onClickLogo = () => {
-    const {history} = props
-    history.replace('/')
-  }
-
   return (
-    <div className="header-container">
-      <button onClick={onClickLogo} type="button" className="logo-button">
-        <img
-          className="logo-image"
-          alt="website logo"
-          src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
-        />
-      </button>
-      <ul className="header-home-jobs">
+    <ul className="header-container">
+      <Link to="/" className="logo-button">
+        <li>
+          <img
+            className="logo-image"
+            alt="website logo"
+            src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
+          />
+        </li>
+      </Link>
+      <div className="home-jobs">
         <Link to="/">
           <li className="list-el">Home</li>
         </Link>
         <Link to="/jobs">
           <li className="list-el">Jobs</li>
         </Link>
-      </ul>
-      <button onClick={onClickLogOut} className="logout-button" type="button">
-        Logout
-      </button>
-    </div>
+      </div>
+      <li className="list-el-button">
+        <button type="button" className="logo-button" onClick={onClickLogOut}>
+          Logout
+        </button>
+      </li>
+    </ul>
   )
 }
 export default withRouter(Header)

@@ -14,6 +14,7 @@ const FilterGroup = props => {
             onChange={onChangeemploymentType}
             id={eachType.employmentTypeId}
             value={eachType.employmentTypeId}
+            name={eachType.employmentTypeId}
             type="checkbox"
           />
           <label className="label-el" htmlFor={eachType.employmentTypeId}>

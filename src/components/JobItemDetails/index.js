@@ -86,6 +86,8 @@ class JobItemDetails extends Component {
     </div>
   )
 
+  retryJobItemDetails = () => this.getJobDetails()
+
   failureView = () => (
     <div>
       <img
@@ -93,8 +95,14 @@ class JobItemDetails extends Component {
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
       />
       <h1>Oops! Something Went Wrong</h1>
-      <p>We cannot seem to find the page you are looking for.</p>
-      <button>Retry</button>
+      <p>We cannot seem to find the page you are looking for</p>
+      <button
+        onClick={this.retryJobItemDetails()}
+        className="btn"
+        type="button"
+      >
+        Retry
+      </button>
     </div>
   )
 

@@ -62,7 +62,8 @@ class Jobs extends Component {
     jobsapiStatus: apiConstans.initial,
     jobsList: [],
     input: '',
-    employmentType: '',
+    employmentType: [],
+
     minPackage: '',
   }
 
@@ -101,7 +102,7 @@ class Jobs extends Component {
     const jwtToken = Cookies.get('jwt_token')
 
     this.setState({jobsapiStatus: apiConstans.inProgress})
-    const jobsapiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minPackage}&search=${input}`
+    const jobsapiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentType.join()}&minimum_package=${minPackage}&search=${input}`
 
     const options = {
       method: 'GET',
@@ -148,7 +149,7 @@ class Jobs extends Component {
 
     return (
       <div className="profile-view">
-        <img alt={name} className="profile-image" src={profileImageUrl} />
+        <img alt="profile" className="profile-image" src={profileImageUrl} />
         <h1 className="profile-heading">{name}</h1>
         <p className="profile-para">{shortBio}</p>
       </div>
@@ -252,7 +253,12 @@ class Jobs extends Component {
   }
 
   changeEmployment = employmentType => {
-    this.setState({employmentType}, this.getJobs)
+    this.setState(
+      prevState => ({
+        employmentType: [...prevState.employmentType, employmentType],
+      }),
+      this.getJobs,
+    )
   }
 
   changeSalary = minPackage => {
