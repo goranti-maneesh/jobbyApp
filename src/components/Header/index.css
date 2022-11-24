@@ -13,7 +13,9 @@
   padding-left: 15px;
   padding-right: 15px;
 
-  height: 10vh;
+  margin-top: 0;
+
+  height: 60px;
 }
 .logo-image {
   width: 120px;

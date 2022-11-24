@@ -252,13 +252,23 @@ class Jobs extends Component {
     this.getJobs()
   }
 
-  changeEmployment = employmentType => {
-    this.setState(
-      prevState => ({
-        employmentType: [...prevState.employmentType, employmentType],
-      }),
-      this.getJobs,
-    )
+  changeEmployment = type => {
+    const {employmentType} = this.state
+    if (employmentType.includes(type)) {
+      this.setState(
+        {
+          employmentType: employmentType.filter(item => item !== type),
+        },
+        this.getJobs,
+      )
+    } else {
+      this.setState(
+        prevState => ({
+          employmentType: [...prevState.employmentType, type],
+        }),
+        this.getJobs,
+      )
+    }
   }
 
   changeSalary = minPackage => {
