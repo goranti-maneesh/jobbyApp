@@ -62,8 +62,7 @@ class Jobs extends Component {
     jobsapiStatus: apiConstans.initial,
     jobsList: [],
     input: '',
-    employmentType: [],
-
+    employmentType: '',
     minPackage: '',
   }
 
@@ -102,7 +101,7 @@ class Jobs extends Component {
     const jwtToken = Cookies.get('jwt_token')
 
     this.setState({jobsapiStatus: apiConstans.inProgress})
-    const jobsapiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentType.join()}&minimum_package=${minPackage}&search=${input}`
+    const jobsapiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minPackage}&search=${input}`
 
     const options = {
       method: 'GET',
@@ -149,7 +148,7 @@ class Jobs extends Component {
 
     return (
       <div className="profile-view">
-        <img alt="profile" className="profile-image" src={profileImageUrl} />
+        <img alt={name} className="profile-image" src={profileImageUrl} />
         <h1 className="profile-heading">{name}</h1>
         <p className="profile-para">{shortBio}</p>
       </div>
@@ -203,7 +202,6 @@ class Jobs extends Component {
   noJobsView = () => (
     <div className="no-jobs-container">
       <img
-        alt="no jobs"
         className="no-jobs"
         src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
       />
@@ -230,7 +228,7 @@ class Jobs extends Component {
   }
 
   renderJobs = () => {
-    const {jobsapiStatus} = this.state
+    const {jobsapiStatus, jobsList} = this.state
     switch (jobsapiStatus) {
       case apiConstans.inProgress:
         return this.renderLoadingView()
@@ -252,23 +250,8 @@ class Jobs extends Component {
     this.getJobs()
   }
 
-  changeEmployment = type => {
-    const {employmentType} = this.state
-    if (employmentType.includes(type)) {
-      this.setState(
-        {
-          employmentType: employmentType.filter(item => item !== type),
-        },
-        this.getJobs,
-      )
-    } else {
-      this.setState(
-        prevState => ({
-          employmentType: [...prevState.employmentType, type],
-        }),
-        this.getJobs,
-      )
-    }
+  changeEmployment = employmentType => {
+    this.setState(employmentType, this.getJobs)
   }
 
   changeSalary = minPackage => {
