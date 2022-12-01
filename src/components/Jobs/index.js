@@ -251,7 +251,7 @@ class Jobs extends Component {
   }
 
   changeEmployment = employmentType => {
-    this.setState(employmentType, this.getJobs)
+    this.setState({employmentType}, this.getJobs)
   }
 
   changeSalary = minPackage => {
